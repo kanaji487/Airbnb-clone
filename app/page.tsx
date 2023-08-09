@@ -1,10 +1,13 @@
 "use client"
-import Image from 'next/image'
+import ClientOnly from "./components/ClientOnly"
+import Container from "./components/Container"
 
 export default function Home() {
   return (
-    <div className='text-rose-500 text-2xl'>
-      Hello airbnb
-    </div>
+    <ClientOnly>
+      <Container>
+        
+      </Container>
+    </ClientOnly>
   )
 }
