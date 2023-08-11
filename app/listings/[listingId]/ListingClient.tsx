@@ -1,6 +1,5 @@
 "use client"
-import { Reservation } from "@prisma/client";
-import { SafeListing, SafeUser } from "@/app/types";
+import { SafeListing, SafeReservation, SafeUser } from "@/app/types";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { categories } from "@/app/components/Navbar/Categories";
 import Container from "@/app/components/Container";
@@ -21,21 +20,21 @@ const initialDateRange = {
 };
 
 interface ListingClientProps {
-    reservation?: Reservation[];
+    reservations?: SafeReservation[];
     listing: SafeListing & {
-        user: SafeUser
+      user: SafeUser;
     };
     currentUser?: SafeUser | null;
 }
 
-const ListingClient: React.FC<ListingClientProps> = ({reservation = [], listing, currentUser}) => {
+const ListingClient: React.FC<ListingClientProps> = ({reservations = [], listing, currentUser}) => {
     const loginModal = useLoginModal();
     const router = useRouter();
 
     const disableDates = useMemo(() => {
         let dates: Date[] = [];
 
-        reservation.forEach((reservation) => {
+        reservations.forEach((reservation) => {
             const range = eachDayOfInterval({
                 start: new Date(reservation.startDate),
                 end: new Date(reservation.endDate)
@@ -43,7 +42,7 @@ const ListingClient: React.FC<ListingClientProps> = ({reservation = [], listing,
             dates = [...dates, ...range];
         })
         return dates;
-    }, [reservation]);
+    }, [reservations]);
 
     const [isLoading, setIsLoading] = useState(false);
     const [totalPrice, setTotalPrice] = useState(listing.price);
