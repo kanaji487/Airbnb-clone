@@ -22,7 +22,7 @@ export default async function getListings(params: IListingsParams) {
         }
 
         if (category) {
-            query.roomCount = category;
+            query.category = category;
         }
 
         if (roomCount) {
