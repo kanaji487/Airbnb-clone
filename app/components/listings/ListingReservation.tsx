@@ -31,10 +31,15 @@ const ListingReservation: React.FC<ListingReservationProps> = ({price, dateRange
                 onChange={(value) => onChangeDate(value.selection)}
             />
             <hr />
-            <div className="p-4">
+            <div className="p-4 flex flex-row items-center justify-between gap-4">
                 <Button 
                     disabled={disabled}
                     label="Reserve"
+                    onClick={onSubmit}  
+                />
+                <Button 
+                    disabled={disabled}
+                    label="Book"
                     onClick={onSubmit}  
                 />
             </div>

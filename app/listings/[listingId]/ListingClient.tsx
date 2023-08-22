@@ -70,6 +70,19 @@ const ListingClient: React.FC<ListingClientProps> = ({reservations = [], listing
         })
     }, [totalPrice, dateRange, listing?.id, router, currentUser, loginModal]);
 
+    // const onCreatebooking = useCallback(() => {
+    //     if (!currentUser) {
+    //         return loginModal.onOpen();
+    //     }
+    //     setIsLoading(true);
+    //     axios.post('/api/booking', {
+    //         totalPrice,
+    //         startDate: dateRange.startDate,
+    //         endDate: dateRange.endDate,
+    //         listingId: listing?.id
+    //     });
+    // }, [currentUser, dateRange.startDate, dateRange.endDate, listing?.id, totalPrice, loginModal]);
+
     useEffect(() => {
         if (dateRange.startDate && dateRange.endDate) {
             const dayCount = differenceInCalendarDays(dateRange.endDate,dateRange.startDate);

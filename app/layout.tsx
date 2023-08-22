@@ -13,11 +13,8 @@ import SearchModal from './components/Modals/SearchModal';
 const font = Nunito({ subsets: ["latin"], });
 
 export const metadata: Metadata = {
-  title: 'Airbnb',
+  title: 'Vacation Homes & Condo Rentals',
   description: 'Airbnb clone',
-  icons: {
-    icon: '/car.png'
-  }
 }
 
 export default async function RootLayout({
